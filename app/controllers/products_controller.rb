@@ -314,7 +314,7 @@ class ProductsController < ApplicationController
   end
 
   def redirect_index
-    if user_signed_in? && @product.saler_id != @product.saler_id
+    if @product.saler_id != current_user.id && @product.saler_id
       redirect_to action: :index 
     elsif @product.buyer_id
       redirect_to action: :index 
